@@ -1,6 +1,6 @@
 import pytest
-from faker import Faker
 from django.contrib.auth import get_user_model
+from faker import Faker
 
 from app.accounts.serializers import MyAuthTokenSerializer
 
@@ -48,6 +48,4 @@ def test_negative_wrong_credentials(payload_get_token):
 
     assert not serializer.is_valid()
 
-    assert serializer.errors["non_field_errors"] == [
-        "Não é possível fazer login com as credenciais fornecidas."
-    ]
+    assert serializer.errors["non_field_errors"] == ["Não é possível fazer login com as credenciais fornecidas."]

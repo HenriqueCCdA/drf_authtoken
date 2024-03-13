@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, get_user_model
 from rest_framework import serializers
 
 
@@ -31,3 +31,21 @@ class MyAuthTokenSerializer(serializers.Serializer):
         attrs["user"] = user
 
         return attrs
+
+
+class WhoamiSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = get_user_model()
+        fields = (
+            "id",
+            "email",
+            "created_at",
+            "modified_at",
+        )
+        extra_kwargs = {
+            "name": {"read_only": True},
+            "email": {"read_only": True},
+            "created_at": {"read_only": True},
+            "modified_at": {"read_only": True},
+        }

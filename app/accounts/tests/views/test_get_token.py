@@ -1,6 +1,6 @@
 import pytest
-from faker import Faker
 from django.shortcuts import resolve_url
+from faker import Faker
 from rest_framework.authtoken.models import Token
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 
@@ -36,10 +36,9 @@ def test_negative_wrong_credentials(client_api, payload_get_token, user_with_pas
     assert body["non_field_errors"] == ["Não é possível fazer login com as credenciais fornecidas."]
 
 
-
 @pytest.mark.unity
 @pytest.mark.parametrize("field", ["email", "password"])
-def test_negative_view_missing_fields(client_api, payload_get_token, field):
+def test_negative_missing_fields(client_api, payload_get_token, field):
 
     data = payload_get_token.copy()
     del data[field]
