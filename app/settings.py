@@ -3,6 +3,8 @@ from pathlib import Path
 import dj_database_url
 from decouple import Csv, config
 
+from app import __version__
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -142,11 +144,11 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "",
-    "DESCRIPTION": "",
-    "VERSION": "0.1.0",
+    "TITLE": "TITLE",
+    "DESCRIPTION": "DESCRIPTION",
+    "VERSION": __version__,
     "SERVE_INCLUDE_SCHEMA": False,
-    "COMPONENT_SPLIT_REQUEST": True,
+    "COMPONENT_SPLIT_REQUEST": False,
 }
 
 SHELL_PLUS_IMPORTS = []
