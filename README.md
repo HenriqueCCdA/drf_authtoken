@@ -2,7 +2,9 @@
 
 [![Backend](https://github.com/HenriqueCCdA/drf_authtoken/actions/workflows/CI.yml/badge.svg)](https://github.com/HenriqueCCdA/drf_authtoken/actions/workflows/CI.yml)
 
-Projeto com a base com o AuthToken do DRF.
+Projeto com a base com o `AuthToken` do `DRF`. As libs utilizadas foram: `django`, `restframework`, `gunicorn`, `python-decouple`, `drf-spectacular` e `django-extensions`. Ferramentas de desenvolvimento utilizadas foram `ruff`, `black`, `pytest` e `taskipy`.
+
+A documentação da `api` fica disponível em `/docs/`.
 
 ## Subindo o banco de dados
 
@@ -102,4 +104,13 @@ Para usar o `ruff` como linter:
 
 ```bash
 docker compose -f docker-compose-dev.yml run api task lint
+```
+
+
+## Simulando o ambiente de produção
+
+Para simular o ambiente de produção simplificado foi usado o `nginx` como `proxy reverso` escutando na porta `80`. Os serviços do app e do banco de dados estão isolados dentro da rede do `docker`. A imagem da `app` é definida em `Dockerfile.prod` e a orquestração dos `containers` em `docker-compose-prod.yml`.
+
+```bash
+docker compose -f docker-compose-prod.yml up -d
 ```
