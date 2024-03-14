@@ -81,11 +81,11 @@ select = [
 src = "app"
 
 [tool.taskipy.tasks]
-fmt_black = {cmd="poetry run black {src}", help="Chamando do black.", use_vars = true}
-fmt_ruff= {cmd="poetry run ruff check {src} --fix", help="Chamando do ruff.", use_vars = true}
+fmt_black = {cmd="black {src}", help="Chamando do black.", use_vars = true}
+fmt_ruff= {cmd="ruff check {src} --fix", help="Chamando do ruff.", use_vars = true}
 fmt = {cmd="task fmt_ruff && task fmt_black", help="Formatador do código."}
 
-lin_ruff = {cmd="poetry run ruff check {src}", help="Linter com o Ruff.", use_vars = true}
+lin_ruff = {cmd="ruff check {src}", help="Linter com o Ruff.", use_vars = true}
 linter = {cmd="task lin_ruff", help="Linter."}
 
 tests = {cmd="pytest", help="Rodando os testes."}
@@ -95,6 +95,6 @@ server_coverage = {cmd="python -m http.server 8001 -d htmlcov", help="Mostrando 
 
 clean = {cmd="rm -rvf .ruff_cache && rm -v .coverage && rm -rfv .pytest_cache && rm -rvf htmlcov && find app -name '*.pyc' -exec rm -vf {} \\;", help="Limpa o projeto."}
 
-db = {cmd="docker compose -f docker-compose-dev.yml up database -d", help="Subindo o contanier do DB."}
+up_db = {cmd="docker compose -f docker-compose-dev.yml up database -d", help="Subindo o contanier do DB."}
 
 server_prod = {cmd="gunicorn app.wsgi --workers 3 --bind localhost:8000 --log-file=-  --access-logfile=-", help="Subindo gunicorn"}
