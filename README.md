@@ -28,6 +28,12 @@ Para instalar as dependencias:
 poetry install --no-root
 ```
 
+Subindo o servidor:
+
+```bash
+python manage.py runserver
+```
+
 Rodando os testes:
 
 ```bash
@@ -60,7 +66,9 @@ task server_prod
 
 ## Desenvolvimento com Docker
 
-Caso você queria é possivel desenvolver interiamente `conteiners`. Para subir os `conteiners` da aplicação e banco de dados:
+Caso você queria é possivel desenvolver interiamente em `conteiners`. A imagem da `app` é definida em `Dockerfile.dev` e a orquestração dos `containers` em `docker-compose-dev.yml`.
+
+Para subir os `conteiners` da aplicação e banco de dados:
 
 ```bash
 docker compose -f docker-compose-dev.yml up -d

@@ -2,25 +2,25 @@ version: "3.8"
 
 services:
 
+  proxy:
+    container_name: app-proxy
+    restart: 'no'
+    build:
+      context: nginx
+    ports:
+      - 80:80
+
   api:
     container_name: app
     build:
-      dockerfile: ./Dockerfile.dev
-    image: app:dev
-    volumes:
-      - ./:/home/app/
+      dockerfile: ./Dockerfile.prod
+    image: app:latest
     restart: 'no'
-    stdin_open: true   # Add this line into your service
-    tty: true   # Add this line into your service
     environment:
       - SECRET_KEY="Sua chave secreta aqui"
       - DOC_API=True
-      - DEBUG=True
       - ALLOWED_HOSTS=localhost,127.0.0.1
-      - PYTHONBREAKPOINT=ipdb.set_trace
       - DATABASE_URL=postgres://user:123456@database:5432/app_db
-    ports:
-      - 8000:8000
     depends_on:
       - database
 
@@ -35,8 +35,6 @@ services:
       - POSTGRES_PASSWORD=123456
       - POSTGRES_USER=user
       - POSTGRES_DB=app_db
-    ports:
-      - 5432:5432
 
 volumes:
   pg_data:

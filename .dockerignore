@@ -6,7 +6,7 @@
 .venv
 **/__pycache__/
 **/*.py[cod]
-analisys
+nginx
 htmlcov
 LICENSE
 .env
@@ -16,5 +16,7 @@ LICENSE
 .editorconfig
 .pre-commit-config.yaml
 docker-compose-dev.yml
+docker-compose-prod.yml
 Dockerfile.dev
+Dockerfile.prod
 README.md

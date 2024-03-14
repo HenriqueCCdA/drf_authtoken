@@ -97,4 +97,4 @@ clean = {cmd="rm -rvf .ruff_cache && rm -v .coverage && rm -rfv .pytest_cache &&
 
 up_db = {cmd="docker compose -f docker-compose-dev.yml up database -d", help="Subindo o contanier do DB."}
 
-server_prod = {cmd="gunicorn app.wsgi --workers 3 --bind localhost:8000 --log-file=-  --access-logfile=-", help="Subindo gunicorn"}
+server_prod = {cmd="gunicorn app.wsgi --workers 3 --bind localhost:8000 --log-file=- --access-logfile=-", help="Subindo o servido com gunicorn"}
