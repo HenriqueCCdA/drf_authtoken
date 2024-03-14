@@ -1,5 +1,7 @@
 # drf_authtoken
 
+[![Backend](https://github.com/HenriqueCCdA/drf_authtoken/actions/workflows/CI.yml/badge.svg)](https://github.com/HenriqueCCdA/drf_authtoken/actions/workflows/CI.yml)
+
 Projeto com a base com o AuthToken do DRF.
 
 ## Subindo o banco de dados
